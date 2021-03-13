@@ -1,0 +1,15 @@
+﻿@model int
+
+@{ 
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "4040 Error!";
+}
+
+<div class="alert alert-danger">
+    <h4>4040 Not Found Error!</h4>
+    <hr />
+    <h5>Course With Id =@Model cannot be found </h5>
+</div>
+<a asp-controller="Course" asp-action="Index" class="btn btn-outline-success">
+    Click here to see the lis of all Courses
+</a>

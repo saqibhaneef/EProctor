@@ -1,0 +1,33 @@
+﻿@model CourseDeleteViewModel
+
+
+@{
+    Layout = "_DashboardLayout";
+}
+
+<div class="col-md-4">
+    <h3>Edit Course</h3>
+
+    <form method="post" asp-action="Delete">
+
+        <div class="card">
+            <h5 class="card-header">Delete Course</h5>
+            <div class="card-body">
+                <div class="card-title">
+                    <div class="card-text">
+                        <h5 class="navbar-text">@Model.Id</h5>
+                        <small class="text-body text-secondary">@Model.Title</small>
+                    </div>
+                </div>
+                <p class="card-text">@Model.Description</p>
+                <div class="form-group">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a asp-action="Index" asp-controller="Course">Cancel</a>
+                </div>
+            </div>
+        </div>
+
+        </form>
+    </div>
+
+
