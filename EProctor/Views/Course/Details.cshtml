@@ -1,23 +1,7 @@
-﻿@model CourseDetailsViewModel
-
-
+﻿
 @{
-    Layout = "_DashboardLayout";
+    Layout = "_Layout";
 }
 
 
-<div class="card">
-    <h5 class="card-header">Course Details</h5>
-    <div class="card-body">
-        <div class="card-title">
-            <div class="card-text">
-                <h5 class="navbar-text">@Model.Course.Id</h5>
-                <small class="text-body text-secondary">@Model.Course.Title</small>
-            </div>
-        </div>
-        <p class="card-text">@Model.Course.Description</p>
-        <a asp-controller="Course" asp-action="Index" class="btn btn-primary">Back</a>
-    </div>
-</div>
-
-
+<h1>Home/Details</h1>

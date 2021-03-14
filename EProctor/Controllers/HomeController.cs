@@ -17,7 +17,11 @@ namespace EProctor.Controllers
             return View();
         }
         
-        public IActionResult Details()
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Contact()
         {
             return View();
         }

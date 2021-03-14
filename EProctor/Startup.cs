@@ -2,6 +2,7 @@ using EProctor.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,6 +21,19 @@ namespace EProctor
         {
             var cs = "Data Source=(localdb)\\MSSQLLocalDB; database=EProctorDb;Integrated Security=True;";
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(cs));
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 4;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                
+                
+            }).AddEntityFrameworkStores<AppDbContext>();
+            
+            
             services.AddMvc();
             services.AddScoped<ICourseRepository, SQLCourseRepository>();
         }
@@ -31,7 +45,13 @@ namespace EProctor
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+            }
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
