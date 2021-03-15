@@ -17,6 +17,13 @@ namespace EProctor.Controllers
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index","Home");
+        }
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -41,5 +48,28 @@ namespace EProctor.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.Email, model.Password,model.RememberMe,false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Course");
+                }
+                
+                    ModelState.AddModelError("", "Invalid credentials");
+                
+            }
+            return View(model);
+        }
+
     }
 }

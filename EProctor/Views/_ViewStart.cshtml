@@ -1,3 +1,13 @@
-﻿@{
-    Layout = "_DashboardLayout";
+﻿@inject SignInManager<IdentityUser> signInManager;
+
+@{
+    if (signInManager.IsSignedIn(User))
+    {
+        Layout = "_DashboardLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+
 }
