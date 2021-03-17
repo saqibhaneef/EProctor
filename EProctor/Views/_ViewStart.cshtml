@@ -1,7 +1,8 @@
-﻿@inject SignInManager<IdentityUser> signInManager;
+﻿@inject SignInManager<ApplicationUser> signInManager;
 
 @{
-    if (signInManager.IsSignedIn(User))
+    if(Context.User.Identity.IsAuthenticated)
+    //if (signInManager.IsSignedIn(User))
     {
         Layout = "_DashboardLayout";
     }

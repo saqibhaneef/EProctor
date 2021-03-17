@@ -1,5 +1,6 @@
 ﻿using EProctor.Models;
 using EProctor.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace EProctor.Controllers
     public class HomeController : Controller
     {
         
-        
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

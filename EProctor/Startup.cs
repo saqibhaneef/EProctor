@@ -1,8 +1,10 @@
 using EProctor.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,7 +23,7 @@ namespace EProctor
         {
             var cs = "Data Source=(localdb)\\MSSQLLocalDB; database=EProctorDb;Integrated Security=True;";
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(cs));
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 4;
                 options.Password.RequiredUniqueChars = 1;
@@ -32,9 +34,13 @@ namespace EProctor
                 
                 
             }).AddEntityFrameworkStores<AppDbContext>();
-            
-            
-            services.AddMvc();
+
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser()
+                    .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddScoped<ICourseRepository, SQLCourseRepository>();
         }
 

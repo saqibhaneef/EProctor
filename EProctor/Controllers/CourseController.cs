@@ -1,5 +1,6 @@
 ﻿using EProctor.Models;
 using EProctor.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EProctor.Controllers
 {
+    
     public class CourseController : Controller
     {
         private readonly ICourseRepository _courserepository;
