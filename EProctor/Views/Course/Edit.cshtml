@@ -1,16 +1,15 @@
-﻿@model CourseCreateViewModel
-
+﻿@model CourseEditViewModel
 @{
-    ViewBag.Title = "Add New Course";
+    ViewBag.Title = "Edit Course";
 }
-
 
 <hr />
 <div class="row">
 
     <div class="col-md-4">
-        <h3>Add New Course</h3>
-        <form method="post" asp-action="Create">
+        <h3>Update Course</h3>
+
+        <form method="post" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -23,13 +22,9 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-            <div class="form-group">
-                <button asp-controller="Course" asp-action="Index" class="btn btn-danger">Cancel</button>
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a asp-action="Index" asp-controller="Course">Cancel</a>
             </div>
         </form>
     </div>
 </div>
-
-

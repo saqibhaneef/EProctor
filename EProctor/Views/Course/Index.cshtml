@@ -1,4 +1,10 @@
-﻿@model CourseDetailsViewModel
+﻿@model IEnumerable<Course>
+
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "All Courses"; 
+}
+
 
 <div class="container">
     <a asp-controller="Course" asp-action="Create"><h6 class="display-4">Add New Course</h6></a>
@@ -23,12 +29,12 @@
                     i++;
                     <tr>
                         <th scope="row">@i</th>
-                        <th scope="row">@course.CourseCode</th>
+                        <th scope="row">@course.Id</th>
                         <td>@course.Title</td>
                         <td>@course.Description</td>
-                        <td><a asp-controller="Course" asp-action="getcourse" asp-route-ccode="@course.CourseCode" class="btn btn-success ">View</a></td>
-                        <td><a asp-action="EditCourse" asp-controller="Course" asp-route-ccode="@course.CourseCode" class="btn btn-primary ">Update</a></td>
-                        <td><a href="#" class="btn btn-danger ">Delete</a></td>
+                        <td><a asp-controller="Course" asp-action="Details" asp-route-id="@course.Id" class="btn btn-success ">View</a></td>
+                        <td><a asp-controller="Course" asp-action="Edit" asp-route-id="@course.Id" class="btn btn-primary ">Update</a></td>
+                        <td><a asp-controller="Course" asp-action="Delete" class="btn btn-danger ">Delete</a></td>
                     </tr>
                 }
             }

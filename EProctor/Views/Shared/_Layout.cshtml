@@ -22,7 +22,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav">
-                        @if (signInManager.IsSignedIn(User)
+                        @if (signInManager.IsSignedIn(User))
                         {
                             <form method="post" asp-action="Logout" asp-controller="Account">
                                 <button type="submit" class="nav-link btn btn-link py-0">
