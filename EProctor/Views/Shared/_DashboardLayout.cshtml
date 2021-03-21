@@ -7,7 +7,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/jquery.js"></script>
     <link href="~/css/dashboard.css" rel="stylesheet" />
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <title>@ViewBag.Title</title>
 
 </head>
@@ -46,17 +48,18 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
-                                Products
+                            <a class="nav-link" asp-controller="Administration" asp-action="ListUsers">
+                                <span data-feather="users"></span>
+                                Users
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Customers
+                            <a class="nav-link" asp-controller="Administration" asp-action="Index">
+                                <span data-feather="shopping-cart"></span>
+                                Roles
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="bar-chart-2"></span>
@@ -128,14 +131,14 @@
                 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
                 <h2>Section title</h2>
-                
+
             </main>
         </div>
     </div>
 
 
 </body>
-<script src="~/lib/jquery/jquery.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>

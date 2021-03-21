@@ -43,7 +43,7 @@ namespace EProctor.Controllers
                 if(result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Course");
+                    return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -74,7 +74,7 @@ namespace EProctor.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Course");
+                        return RedirectToAction("Index", "Home");
                     }
                     
                 }

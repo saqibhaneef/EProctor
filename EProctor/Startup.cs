@@ -21,7 +21,7 @@ namespace EProctor
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var cs = "Data Source=(localdb)\\MSSQLLocalDB; database=EProctorDb;Integrated Security=True;";
+            var cs = "Data Source=(localdb)\\MSSQLLocalDB; database=EProctorDb;Integrated Security=True;MultipleActiveResultSets=true;";
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(cs));
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -59,6 +59,7 @@ namespace EProctor
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
