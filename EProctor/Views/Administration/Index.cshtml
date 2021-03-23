@@ -17,11 +17,14 @@
                 <div class="card-body">
                     <h5 class="card-title">@role.Name</h5>
                 </div>
-                <div class="card-footer">
-                    <a asp-controller="Administration" asp-action="EditRole" 
-                       asp-route-id="@role.Id" class="btn btn-primary">Edit
+                <div class="card-footer form-group row">
+                    <a asp-controller="Administration" asp-action="EditRole"
+                       asp-route-id="@role.Id" class="btn btn-primary">
+                        Edit
                     </a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <form method="post" asp-action="DeleteRole" asp-route-id="@role.Id">
+                        <button type="submit" onclick="return confirm('Are you sure to delete Role: @role.Name ?')" class="btn btn-danger ml-3">Delete</button>
+                    </form>
                 </div>
             </div>
         }
