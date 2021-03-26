@@ -2,11 +2,14 @@
 
 
 @{
-    
+
     if(Context.User.Identity.IsAuthenticated)
     //if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
     {
-        
+        //if (User.IsInRole("Admin"))
+        //{
+        //    Layout = "_DashboardLayout";
+        //}
         Layout = "_DashboardLayout";
     }
     else

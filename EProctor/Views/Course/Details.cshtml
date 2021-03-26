@@ -4,17 +4,20 @@
 @{
     ViewBag.Title = "Course Details";
 }
-
-<div class="card">
-    <h5 class="card-header">Course Details</h5>
-    <div class="card-body">
-        <div class="card-title">
-            <div class="card-text">
-                <h5 class="navbar-text">@Model.Course.Title</h5>
-                <small class="text-body text-secondary">@Model.Course.Id</small>
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Course Details</h5>
+            <div class="card-body">
+                <div class="card-title">
+                    <div class="card-text">
+                        <h5 class="navbar-text">@Model.Course.Title</h5>
+                        <small class="text-body text-secondary">@Model.Course.Id</small>
+                    </div>
+                </div>
+                <p class="card-text">@Model.Course.Description</p>
+                <a asp-action="Index" asp-controller="Course">Back</a>
             </div>
         </div>
-        <p class="card-text">@Model.Course.Description</p>
-        <a asp-action="Index" asp-controller="Course">Back</a>
     </div>
 </div>
