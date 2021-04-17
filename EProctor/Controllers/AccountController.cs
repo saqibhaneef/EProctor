@@ -32,7 +32,21 @@ namespace EProctor.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost][HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsEmailInUse(string email)//further implementaion is in RegisterViewModel
+        {
+            var result=await userManager.FindByEmailAsync(email);
+            if (result == null)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json($"Email {email} is already in use.");
+            }
+        }
+            [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -85,5 +99,6 @@ namespace EProctor.Controllers
             return View(model);
         }
 
+        
     }
 }

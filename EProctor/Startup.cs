@@ -1,4 +1,5 @@
 using EProctor.Models;
+using EProctor.Models.UserModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +42,29 @@ namespace EProctor
                     .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
+
+
+            //Default accessDenied redirect user to account controller.
+            //Default redirect changes to Admnistration controller
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
+            }
+            );
+
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy",
+                    policy => policy.RequireClaim("Delete Role"));
+
+                                options.AddPolicy("AdminRolePolicy",
+                    policy => policy.RequireRole("Admin"));
+            }
+            );
+
             services.AddScoped<ICourseRepository, SQLCourseRepository>();
+            services.AddScoped<IContactRepository, SQLContactRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

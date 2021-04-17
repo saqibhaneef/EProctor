@@ -1,45 +1,66 @@
-﻿@model IEnumerable<IdentityRole>
+﻿
 
-@{ 
-    ViewBag.Title = "All Roles";
-}
-<div class="container">
-    <a asp-controller="Administration" asp-action="CreateRole" class="btn btn-primary mb-3">Add Role</a>
 
-    @if (Model.Any())
-    {
-        foreach (var role in Model)
-        {
-            <div class="card mb-3">
-                <div class="card-header">
-                    Role Id: @role.Id
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">@role.Name</h5>
-                </div>
-                <div class="card-footer form-group row">
-                    <a asp-controller="Administration" asp-action="EditRole"
-                       asp-route-id="@role.Id" class="btn btn-primary">
-                        Edit
-                    </a>
-                    <form method="post" asp-action="DeleteRole" asp-route-id="@role.Id">
-                        <button type="submit" onclick="return confirm('Are you sure to delete Role: @role.Name ?')" class="btn btn-danger ml-3">Delete</button>
-                    </form>
-                </div>
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>150</h3>
+
+                <p>User Registrations</p>
             </div>
-        }
-    }
-    else
-    {
-        <div class="card">
-            <div class="card-header">
-                No Roles Created Yet
+            <div class="icon">
+                <i class="fa fa-user-alt"></i>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Use button below to create role</h5>
-                <a asp-controller="Administration" asp-action="CreateRole" class="btn btn-primary">Create Role</a>
-            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-    }
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
 
+                <p>Students</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-graduation-cap"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>44</h3>
+
+                <p>Teachers</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user-tie"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>65</h3>
+
+                <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
 </div>
+<!-- /.row -->

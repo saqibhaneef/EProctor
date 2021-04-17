@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace EProctor.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         
-        [AllowAnonymous]
+        
         public IActionResult Index()
         {
             return View();
